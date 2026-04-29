@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blue South | Deli & Soul Food | Lansdowne, PA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+```
+:root {
+  --navy: #0d1b2e;
+  --navy-mid: #122540;
+  --navy-light: #1a3354;
+  --gold: #c9a227;
+  --gold-light: #e2bc4e;
+  --cream: #f5f0e8;
+  --cream-dark: #e8dfc9;
+  --white: #fdfaf5;
+  --text-dark: #0d1b2e;
+  --text-muted: #5a6a7a;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--white);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* ---- NAV ---- */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(13, 27, 46, 0.96);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  height: 64px;
+  border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+  transition: all 0.3s ease;
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  transition: opacity 0.2s, color 0.2s;
+}
+
+.nav-links a:hover { opacity: 1; color: var(--gold-light); }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 64px; left: 0; right: 0;
+  background: var(--navy);
+  padding: 1.5rem 5%;
+  flex-direction: column;
+  gap: 1.2rem;
+  z-index: 99;
+  border-bottom: 2px solid var(--gold);
+}
+
+.mobile-menu.open { display: flex; }
+
+.mobile-menu a {
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding-bottom: 0.8rem;
+}
+
+/* ---- HERO ---- */
+#hero {
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 5% 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 110%, rgba(201, 162, 39, 0.12) 0%, transparent 70%),
+    repeating-linear-gradient(
+      135deg,
+      transparent,
+      transparent 40px,
+      rgba(201,162,39,0.03) 40px,
+      rgba(201,162,39,0.03) 41px
+    );
+  pointer-events: none;
+}
+
+.hero-ornament {
+  font-family: var(--serif);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.7;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  animation: fadeUp 0.9s 0.1s ease both;
+}
+
+.hero-title span {
+  color: var(--gold);
+  display: block;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 1.8rem auto;
+  animation: fadeUp 0.9s 0.2s ease both;
+}
+
+.hero-tagline {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--cream-dark);
+  font-weight: 300;
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.65;
+  opacity: 0.9;
+  animation: fadeUp 0.9s 0.3s ease both;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeUp 0.9s 0.4s ease both;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--navy);
+  padding: 0.85rem 2rem;
+  border-radius: 3px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+.btn-outline {
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  background: transparent;
+  padding: 0.85rem 2rem;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  background: var(--gold);
+  color: var(--navy);
+  transform: translateY(-2px);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gold);
+  opacity: 0.5;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: fadeUp 1s 0.8s ease both;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 36px;
+  background: var(--gold);
+  animation: scrollPulse 2s infinite;
+}
+
+/* ---- SECTION BASE ---- */
+section { padding: 6rem 5%; }
+
+.section-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.section-title.light { color: var(--white); }
+
+.section-body {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  max-width: 600px;
+}
+
+/* ---- ABOUT ---- */
+#about {
+  background: var(--cream);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-visual {
+  position: relative;
+}
+
+.about-block {
+  background: var(--navy);
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.about-block-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+}
+
+.about-block-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 70%, rgba(201,162,39,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 20%, rgba(201,162,39,0.10) 0%, transparent 50%);
+}
+
+.about-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.about-quote {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  color: var(--gold);
+  line-height: 1.4;
+  font-style: italic;
+}
+
+.about-quote-attr {
+  font-size: 0.8rem;
+  color: var(--cream-dark);
+  opacity: 0.6;
+  margin-top: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.about-accent-box {
+  position: absolute;
+  bottom: -1.5rem;
+  right: -1.5rem;
+  width: 80px;
+  height: 80px;
+  border: 3px solid var(--gold);
+  border-radius: 3px;
+  opacity: 0.4;
+}
+
+.about-content .section-body + .section-body {
+  margin-top: 1.2rem;
+}
+
+.about-stat-row {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.about-stat {
+  border-left: 3px solid var(--gold);
+  padding-left: 1rem;
+}
+
+.about-stat-num {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1;
+}
+
+.about-stat-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-top: 0.2rem;
+}
+
+/* ---- MENU ---- */
+#menu {
+  background: var(--navy);
+  text-align: center;
+}
+
+#menu .section-label { color: var(--gold); }
+
+.menu-tabs {
+  display: flex;
+  gap: 0;
+  justify-content: center;
+  margin: 2.5rem auto 3rem;
+  border: 1.5px solid rgba(201,162,39,0.3);
+  border-radius: 4px;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.menu-tab {
+  padding: 0.75rem 2.5rem;
+  background: transparent;
+  color: var(--cream-dark);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s;
+  opacity: 0.6;
+}
+
+.menu-tab.active {
+  background: var(--gold);
+  color: var(--navy);
+  opacity: 1;
+}
+
+.menu-panel { display: none; }
+.menu-panel.active { display: block; }
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.menu-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,162,39,0.15);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+
+.menu-card:hover {
+  border-color: rgba(201,162,39,0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+}
+
+.menu-card-img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.menu-card:hover .menu-card-img {
+  transform: scale(1.04);
+}
+
+.menu-card-img-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+/* Gradient food photo placeholders */
+.food-img {
+  width: 100%;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  transition: transform 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.food-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.35) 100%);
+}
+
+.menu-card:hover .food-img { transform: scale(1.04); }
+
+.fi-breakfast { background: linear-gradient(135deg, #b5651d 0%, #d4843a 40%, #e8a24e 70%, #c97832 100%); }
+.fi-hoagie    { background: linear-gradient(135deg, #8b5e3c 0%, #c4894f 40%, #d9a96e 70%, #a06530 100%); }
+.fi-cheesesteak { background: linear-gradient(135deg, #7a3b1e 0%, #b55a28 40%, #cc7a3a 70%, #8c4420 100%); }
+.fi-drinks    { background: linear-gradient(135deg, #1a3a5c 0%, #2a5a8c 40%, #3a7ab8 70%, #1e4870 100%); }
+.fi-coldcut   { background: linear-gradient(135deg, #6b3a2a 0%, #a05a3a 40%, #c47850 70%, #7a4028 100%); }
+.fi-special   { background: linear-gradient(135deg, #3a5c2a 0%, #5a8c3a 40%, #7ab050 70%, #426830 100%); }
+.fi-oxtail    { background: linear-gradient(135deg, #3a1a0a 0%, #6b3010 40%, #8c4818 70%, #4a2008 100%); }
+.fi-whiting   { background: linear-gradient(135deg, #c8a84b 0%, #e8c86a 40%, #f0d880 70%, #c09830 100%); }
+.fi-chicken   { background: linear-gradient(135deg, #8b4513 0%, #c8681a 40%, #e07820 70%, #a04810 100%); }
+.fi-grits     { background: linear-gradient(135deg, #c8b87a 0%, #e8d898 40%, #f0e8a8 70%, #c8a850 100%); }
+.fi-deviled   { background: linear-gradient(135deg, #c8c070 0%, #e8e090 40%, #f8f0a8 70%, #b8a848 100%); }
+.fi-sides     { background: linear-gradient(135deg, #2a4a1a 0%, #3a7020 40%, #4a9028 70%, #1e3810 100%); }
+
+.menu-card-body {
+  padding: 1.1rem 1.25rem 1.35rem;
+}
+
+.menu-card-name {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--white);
+  margin-bottom: 0.35rem;
+}
+
+.menu-card-desc {
+  font-size: 0.83rem;
+  color: var(--cream-dark);
+  opacity: 0.62;
+  line-height: 1.6;
+}
+
+.menu-badge {
+  display: inline-block;
+  background: rgba(201,162,39,0.15);
+  color: var(--gold);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.18rem 0.55rem;
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.menu-byob {
+  margin-top: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(201,162,39,0.08);
+  border: 1px solid rgba(201,162,39,0.25);
+  padding: 0.85rem 1.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: var(--gold-light);
+  letter-spacing: 0.04em;
+}
+
+/* ---- HOURS ---- */
+#hours {
+  background: var(--cream);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+}
+
+.hours-table tr {
+  border-bottom: 1px solid rgba(13,27,46,0.08);
+}
+
+.hours-table tr:last-child { border-bottom: none; }
+
+.hours-table td {
+  padding: 0.85rem 0;
+  font-size: 0.92rem;
+  color: var(--text-dark);
+}
+
+.hours-table td:first-child {
+  font-weight: 600;
+  color: var(--navy);
+  width: 45%;
+}
+
+.hours-table td:last-child {
+  color: var(--text-muted);
+}
+
+.hours-table tr.closed td:last-child {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.hours-note {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--navy);
+  border-radius: 4px;
+  font-size: 0.83rem;
+  color: var(--cream-dark);
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.hours-cta-box {
+  background: var(--navy);
+  border-radius: 6px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-self: center;
+}
+
+.hours-cta-title {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.hours-cta-title span { color: var(--gold); }
+
+.hours-cta-body {
+  font-size: 0.9rem;
+  color: var(--cream-dark);
+  opacity: 0.7;
+  line-height: 1.7;
+}
+
+.cta-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--gold-light);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: color 0.2s;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(201,162,39,0.15);
+}
+
+.cta-link:last-of-type { border-bottom: none; }
+.cta-link:hover { color: var(--white); }
+
+.cta-link-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(201,162,39,0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ---- CONTACT ---- */
+#contact {
+  background: var(--white);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.map-container {
+  border-radius: 6px;
+  overflow: hidden;
+  border: 3px solid var(--cream-dark);
+  height: 380px;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.contact-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.contact-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--cream);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  border: 2px solid var(--cream-dark);
+}
+
+.contact-item-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.contact-item-value {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+.contact-item-value a {
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.contact-item-value a:hover { color: var(--gold); }
+
+/* ---- FOOTER ---- */
+footer {
+  background: var(--navy);
+  padding: 4rem 5% 2.5rem;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.footer-tagline {
+  font-size: 0.85rem;
+  color: var(--cream-dark);
+  opacity: 0.5;
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.footer-links a {
+  color: var(--cream-dark);
+  text-decoration: none;
+  font-size: 0.82rem;
+  opacity: 0.55;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.footer-links a:hover { opacity: 1; }
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer-social a {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(201,162,39,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.footer-social a:hover {
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
+}
+
+.footer-info {
+  font-size: 0.82rem;
+  color: var(--cream-dark);
+  opacity: 0.4;
+  line-height: 1.9;
+  margin-bottom: 2rem;
+}
+
+.footer-divider {
+  width: 40px;
+  height: 1px;
+  background: rgba(201,162,39,0.3);
+  margin: 1.5rem auto;
+}
+
+.footer-closing {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--gold);
+  opacity: 0.7;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.footer-copy {
+  font-size: 0.72rem;
+  color: var(--cream-dark);
+  opacity: 0.25;
+  letter-spacing: 0.06em;
+}
+
+/* ---- ANIMATIONS ---- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.5; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(0.6); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+  #about, #hours, #contact {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-visual { display: none; }
+
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+
+  section { padding: 4rem 6%; }
+
+  .menu-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 560px) {
+  .hero-ctas { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-outline { width: 100%; max-width: 280px; text-align: center; }
+  .menu-grid { grid-template-columns: 1fr; }
+  .about-stat-row { gap: 1.5rem; }
+  .hours-cta-box { padding: 1.75rem; }
+  .map-container { height: 260px; }
+}
+```
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">Blue South</a>
+    <ul class="nav-links">
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#hours">Hours</a></li>
+      <li><a href="#contact">Find Us</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMobile()">Our Story</a>
+    <a href="#menu" onclick="closeMobile()">Menu</a>
+    <a href="#hours" onclick="closeMobile()">Hours</a>
+    <a href="#contact" onclick="closeMobile()">Find Us</a>
+  </div>
+
+  <!-- HERO -->
+
+  <section id="hero">
+    <div class="hero-bg-pattern"></div>
+    <div>
+      <p class="hero-ornament">28 N Lansdowne Ave &nbsp;&bull;&nbsp; Lansdowne, PA</p>
+      <h1 class="hero-title">Blue<span>South.</span></h1>
+      <div class="hero-divider"></div>
+      <p class="hero-tagline">Neighborhood deli by day. Soul food kitchen by night. Built by hand, cooked with love, rooted in community.</p>
+      <div class="hero-ctas">
+        <a href="tel:+14452624335" class="btn-primary">Call to Order or Reserve</a>
+        <a href="https://maps.google.com/?q=28+N+Lansdowne+Ave,+Lansdowne,+PA+19050" target="_blank" rel="noopener" class="btn-outline">Get Directions</a>
+        <a href="https://instagram.com/bluesouth28" target="_blank" rel="noopener" class="btn-outline">Follow on Instagram</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+    <div class="about-visual reveal">
+      <div class="about-block">
+        <div class="about-block-bg"></div>
+        <div class="about-block-inner">
+          <span class="about-icon">🍳</span>
+          <p class="about-quote">"I saw this small community and just took the full opportunity."</p>
+          <p class="about-quote-attr">Jacob Blue, Owner &amp; Chef</p>
+        </div>
+      </div>
+      <div class="about-accent-box"></div>
+    </div>
+
+```
+<div class="about-content">
+  <p class="section-label reveal">Our Story</p>
+  <h2 class="section-title reveal">From North Carolina Roots<br>to Lansdowne's Table</h2>
+  <p class="section-body reveal">Chef Jacob Blue grew up in North Carolina, shaped by family meals that carried weight and flavor in every bite. Those recipes traveled north with him, and now they live here, in a storefront he rebuilt from the ground up alongside his partner Louis Feliciano.</p>
+  <p class="section-body reveal" style="margin-top:1.2rem">Jacob spent 17 years at Wawa learning the deli trade, the rhythm of a neighborhood spot, the value of fast, honest food made with care. Blue South is where both worlds meet: a daytime deli that feeds the block and an evening soul food kitchen that feeds something deeper.</p>
+  <p class="section-body reveal" style="margin-top:1.2rem">They laid the floors, patched the walls, and built a home. When you walk through that door, you feel it.</p>
+
+  <div class="about-stat-row reveal">
+    <div class="about-stat">
+      <div class="about-stat-num">17</div>
+      <div class="about-stat-label">Years in the deli game</div>
+    </div>
+    <div class="about-stat">
+      <div class="about-stat-num">2026</div>
+      <div class="about-stat-label">Grand opening, Lansdowne</div>
+    </div>
+    <div class="about-stat">
+      <div class="about-stat-num">100%</div>
+      <div class="about-stat-label">Built by hand, from scratch</div>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- MENU -->
+
+  <section id="menu">
+    <p class="section-label reveal">What We're Serving</p>
+    <h2 class="section-title light reveal">The Menu</h2>
+    <p class="section-body reveal" style="margin: 0 auto 0; color: rgba(245,240,232,0.55); max-width:520px;">
+      Two kitchens, one soul. Stop in for the deli. Come back for the soul food.
+    </p>
+
+```
+<div class="menu-tabs reveal">
+  <button class="menu-tab active" onclick="switchTab('day', this)">Daytime Deli</button>
+  <button class="menu-tab" onclick="switchTab('night', this)">Evening Soul Food</button>
+</div>
+
+<div class="menu-panel active" id="tab-day">
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-card-img-wrap">
+        <div class="food-img fi-breakfast" role="img" aria-label="Breakfast plate with eggs">🍳</div>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-badge">Breakfast</div>
+        <div class="menu-card-name">Breakfast Plates</div>
+        <div class="menu-card-desc">Classic morning fuel. Eggs done right, served hot, the way a real neighborhood spot should.</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img-wrap">
+        <div class="food-img fi-hoagie" role="img" aria-label="Specialty hoagie sandwich">🥖</div>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-badge">Deli</div>
+        <div class="menu-card-name">Specialty Hoagies</div>
+        <div class="menu-card-desc">Stacked with care, cold cuts and cheeses selected for flavor. Not just a sandwich, a statement.</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img-wrap">
+        <div class="food-img fi-cheesesteak" role="img" aria-label="Cheesesteak sandwich">🥩</div>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-badge">Deli</div>
+        <div class="menu-card-name">Cheesesteaks</div>
+        <div class="menu-card-desc">Philly's favorite, done right in Lansdowne. Thin-sliced, well-seasoned, properly loaded.</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img-wrap">
+        <div class="food-img fi-drinks" role="img" aria-label="Handcrafted drinks">🥤</div>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-badge">Handcrafted</div>
+        <div class="menu-card-name">Handcrafted Drinks</div>
+        <div class="menu-card-desc">House drinks worth ordering. Something to wash down a great meal, made fresh in-house.</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img-wrap">
+        <div class="food-img fi-coldcut" role="img" aria-label="Cold cut sandwich">🥪</div>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-badge">Deli</div>
+        <div class="menu-card-name">Cold Cut Sandwiches</div>
+        <div class="menu-card-desc">Built with the finest cold cuts and cheeses, assembled the way Jacob learned at the counter.</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img-wrap">
+        <div class="food-img fi-special" role="img" aria-label="Daily specials">🍽️</div>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-badge">Daily</div>
+        <div class="menu-card-name">Daily Specials</div>
+        <div class="menu-card-desc">Ask what's fresh. There's always something good worth trying that day.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="menu-panel" id="tab-night">
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-card-img-wrap">
+        <div class="food-img fi-oxtail" role="img" aria-label="Oxtail with gravy">🍖</div>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-badge">Signature</div>
+        <div class="menu-card-name">Oxtail with Gravy</div>
+        <div class="menu-card-desc">Slow-cooked, tender, and smothered. A dish that takes time to make and no time to finish.</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img-wrap">
+        <div class="food-img fi-whiting" role="img" aria-label="Fried whiting fish">🐟</div>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-badge">Classic</div>
+        <div class="menu-card-name">Fried Whiting</div>
+        <div class="menu-card-desc">Golden-fried, crispy outside, flaky inside. A Southern staple executed the right way.</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img-wrap">
+        <div class="food-img fi-chicken" role="img" aria-label="Fried chicken">🍗</div>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-badge">Classic</div>
+        <div class="menu-card-name">Fried Chicken</div>
+        <div class="menu-card-desc">Fresh, well-seasoned, and fried with intention. The kind that keeps people talking.</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img-wrap">
+        <div class="food-img fi-grits" role="img" aria-label="Fish and grits">🥘</div>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-badge">Comfort</div>
+        <div class="menu-card-name">Fish and Grits</div>
+        <div class="menu-card-desc">Southern comfort in a bowl. Rich, warm, and exactly what you needed without knowing it.</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img-wrap">
+        <div class="food-img fi-deviled" role="img" aria-label="Shrimp deviled eggs">🥚</div>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-badge">Starter</div>
+        <div class="menu-card-name">Shrimp Deviled Eggs</div>
+        <div class="menu-card-desc">A house specialty. Creamy, briny, and bold — the kind of starter that steals the table's attention.</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img-wrap">
+        <div class="food-img fi-sides" role="img" aria-label="Collard greens and potato salad">🥗</div>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-badge">Sides</div>
+        <div class="menu-card-name">Collard Greens &amp; Potato Salad</div>
+        <div class="menu-card-desc">The sides that complete the plate. Made from family recipes that travel well across generations.</div>
+      </div>
+    </div>
+  </div>
+  <div class="menu-byob reveal">
+    <span>🍷</span>
+    <span>Dinner service is BYOB. No alcohol served on-site. Bring your favorite bottle and settle in.</span>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- HOURS -->
+
+  <section id="hours">
+    <div>
+      <p class="section-label reveal">When to Find Us</p>
+      <h2 class="section-title reveal">Hours</h2>
+      <table class="hours-table reveal">
+        <tbody>
+          <tr>
+            <td>Monday</td>
+            <td>9:00 am &ndash; 3:00 pm</td>
+          </tr>
+          <tr>
+            <td>Tuesday</td>
+            <td>9:00 am &ndash; 3:00 pm</td>
+          </tr>
+          <tr>
+            <td>Wednesday</td>
+            <td>9:00 am &ndash; 2:00 pm &nbsp;&bull;&nbsp; 5:00 pm &ndash; 9:00 pm</td>
+          </tr>
+          <tr>
+            <td>Thursday</td>
+            <td>9:00 am &ndash; 2:00 pm &nbsp;&bull;&nbsp; 5:00 pm &ndash; 9:00 pm</td>
+          </tr>
+          <tr>
+            <td>Friday</td>
+            <td>9:00 am &ndash; 2:00 pm &nbsp;&bull;&nbsp; 5:00 pm &ndash; 10:00 pm</td>
+          </tr>
+          <tr>
+            <td>Saturday</td>
+            <td>10:00 am &ndash; 2:00 pm &nbsp;&bull;&nbsp; 5:00 pm &ndash; 10:00 pm</td>
+          </tr>
+          <tr class="closed">
+            <td>Sunday</td>
+            <td>Closed</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="hours-note reveal">Saturday is brunch season. Come for the midmorning energy and stay for the soul food in the evening.</p>
+    </div>
+
+```
+<div class="hours-cta-box reveal">
+  <h3 class="hours-cta-title">Ready to come in?<br><span>We'd love to see you.</span></h3>
+  <p class="hours-cta-body">Call ahead to reserve a table for dinner, or just walk in during the day. Either way, there's a plate with your name on it.</p>
+
+  <a href="tel:+14452624335" class="cta-link">
+    <span class="cta-link-icon">📞</span>
+    <span>(445) 262-4335 &nbsp; Call or Text</span>
+  </a>
+  <a href="https://maps.google.com/?q=28+N+Lansdowne+Ave,+Lansdowne,+PA+19050" target="_blank" rel="noopener" class="cta-link">
+    <span class="cta-link-icon">📍</span>
+    <span>28 N Lansdowne Ave, Lansdowne PA 19050</span>
+  </a>
+  <a href="https://instagram.com/bluesouth28" target="_blank" rel="noopener" class="cta-link">
+    <span class="cta-link-icon">📸</span>
+    <span>@bluesouth28 on Instagram</span>
+  </a>
+</div>
+```
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+    <div class="map-container reveal">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3058.732!2d-75.2755!3d39.9392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c3a0b0000001%3A0x0!2s28+N+Lansdowne+Ave%2C+Lansdowne%2C+PA+19050!5e0!3m2!1sen!2sus!4v1"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Blue South location map"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+```
+<div class="contact-info">
+  <p class="section-label reveal">Find Us</p>
+  <h2 class="section-title reveal">Come Through</h2>
+
+  <div class="contact-item reveal">
+    <div class="contact-icon">📍</div>
+    <div>
+      <div class="contact-item-label">Address</div>
+      <div class="contact-item-value">
+        <a href="https://maps.google.com/?q=28+N+Lansdowne+Ave,+Lansdowne,+PA+19050" target="_blank" rel="noopener">
+          28 N Lansdowne Ave<br>Lansdowne, PA 19050
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-item reveal">
+    <div class="contact-icon">📞</div>
+    <div>
+      <div class="contact-item-label">Phone</div>
+      <div class="contact-item-value">
+        <a href="tel:+14452624335">(445) 262-4335</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-item reveal">
+    <div class="contact-icon">📸</div>
+    <div>
+      <div class="contact-item-label">Instagram</div>
+      <div class="contact-item-value">
+        <a href="https://instagram.com/bluesouth28" target="_blank" rel="noopener">@bluesouth28</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-item reveal">
+    <div class="contact-icon">👥</div>
+    <div>
+      <div class="contact-item-label">Facebook</div>
+      <div class="contact-item-value">
+        <a href="https://facebook.com/BlueSouth28" target="_blank" rel="noopener">Blue South on Facebook</a>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="footer-logo">Blue South</div>
+    <p class="footer-tagline">Deli by Day &nbsp;&bull;&nbsp; Soul Food by Night &nbsp;&bull;&nbsp; Lansdowne, PA</p>
+
+```
+<div class="footer-social">
+  <a href="https://instagram.com/bluesouth28" target="_blank" rel="noopener" aria-label="Instagram">&#x1F4F7;</a>
+  <a href="https://facebook.com/BlueSouth28" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+</div>
+
+<div class="footer-links">
+  <a href="#about">Our Story</a>
+  <a href="#menu">Menu</a>
+  <a href="#hours">Hours</a>
+  <a href="#contact">Find Us</a>
+  <a href="tel:+14452624335">(445) 262-4335</a>
+</div>
+
+<div class="footer-info">
+  28 N Lansdowne Ave, Lansdowne, PA 19050<br>
+  Monday &amp; Tuesday 9am&ndash;3pm &nbsp;&bull;&nbsp; Wed &amp; Thu 9am&ndash;2pm, 5&ndash;9pm<br>
+  Friday 9am&ndash;2pm, 5&ndash;10pm &nbsp;&bull;&nbsp; Saturday 10am&ndash;2pm, 5&ndash;10pm &nbsp;&bull;&nbsp; Sunday Closed
+</div>
+
+<div class="footer-divider"></div>
+<p class="footer-closing">Good food. Good people. Good community.</p>
+<p class="footer-copy">&copy; 2026 Blue South. All rights reserved.</p>
+```
+
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    function closeMobile() {
+      mobileMenu.classList.remove('open');
+    }
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    function switchTab(tab, btn) {
+      document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + tab).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
